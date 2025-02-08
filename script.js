@@ -8,9 +8,21 @@ async function getWeatherDataAt(location = "London,UK") {
     const json = await response.json();
     console.log(json);
     processJSON(json);
+    changeBackgroundToSkyBlue();
   } catch (error) {
     console.log(error.message);
+    changeBackgroundToRed();
   }
+}
+
+function changeBackgroundToSkyBlue() {
+  const body = document.querySelector("body");
+  body.style.backgroundColor = "skyblue";
+}
+
+function changeBackgroundToRed() {
+  const body = document.querySelector("body");
+  body.style.backgroundColor = "red";
 }
 
 function processJSON(json) {
@@ -38,7 +50,7 @@ function calculateC(F) {
 }
 
 // getWeatherDataAt();
-// getWeatherDataAt("Dallas, TX")
+getWeatherDataAt("Dallas");
 
 /*
 {queryCost: 1, latitude: 51.5064, longitude: -0.12721, resolvedAddress: 'London, England, United Kingdom', address: 'London,UK', …}
